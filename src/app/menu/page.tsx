@@ -82,6 +82,25 @@ function Menu() {
               </div>
             </div>
           </div>
+          <div className="mt-20">
+            <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
+              <h3 className="text-2xl text-black font-semibold">
+                VODKA
+              </h3>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-10 mt-5">
+              <div>
+                <h3 className="text-xl text-black font-semibold">Grey Goose</h3>
+                <p className="mt-2.5 text-sm text-[#979797]">By Glass THB 500</p>
+                <p className="text-sm text-[#979797]">Bottle THB 5,900</p>
+              </div>
+              <div>
+                <h3 className="text-xl text-black font-semibold">Grey Goose Altius</h3>
+                <p className="mt-2.5 text-sm text-[#979797]">By Glass THB 1,500</p>
+                <p className="text-sm text-[#979797]">Bottle THB 18,000</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
