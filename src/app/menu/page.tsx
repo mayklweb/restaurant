@@ -39,7 +39,7 @@ function Menu() {
         </div>
         <div className="mt-10">
           {
-            categories.map((category) => (
+            categories?.map((category) => (
               <div key={category.id}>
                 <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
                   <h3 className="text-2xl text-black font-semibold">
@@ -47,7 +47,7 @@ function Menu() {
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 mt-5">
-                  {products.filter(product => product.category_id !== category.id).map((product) => (
+                  {products?.filter(product => product.category_id !== category.id).map((product) => (
                     <div key={product.id}>
                       <div>
                         <Image
