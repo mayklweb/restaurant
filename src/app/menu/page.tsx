@@ -1,7 +1,36 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { ProductsType, CategoriesType } from "../../types/types";
+import { useQuery } from "@tanstack/react-query";
+import { getCategories, getMenu } from "../../api/apiServices";
 
 function Menu() {
+
+
+  const { data: products, isError, error, isLoading } = useQuery<ProductsType[], Error>({
+    queryKey: ['products'],
+    queryFn: getMenu,
+  })
+
+
+  const { data: categories, isError: isCategoriesError, error: categoriesError, isLoading: isCategoriesLoading } = useQuery<CategoriesType[], Error>({
+    queryKey: ['categories'],
+    queryFn: getCategories,
+  })
+
+  if (isLoading) return <div>Loading...</div>
+
+  if (isError) return <div>Error: {error.message}</div>
+
+  console.log(products);
+  if (isCategoriesLoading) return <div>Loading...</div>
+
+  if (isCategoriesError) return <div>Error: {categoriesError.message}</div>
+  console.log(categories);
+
+
+
   return (
     <div>
       <div className="container">
@@ -9,102 +38,44 @@ function Menu() {
           <h1 className="text-4xl text-black font-semibold">MENU</h1>
         </div>
         <div className="mt-10">
-          <div>
-            <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
-              <h3 className="text-2xl text-black font-semibold">
-                ALL DAY SIGNATURE COCKTAILS
-              </h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-10 mt-5">
-              <div>
-                <div>
-                  <Image
-                    src="https://static.wixstatic.com/media/a40f43_5c408c6ce8b84b3a8d8eda1ce1c99ce1~mv2.jpg/v1/fill/w_520,h_520,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/a40f43_5c408c6ce8b84b3a8d8eda1ce1c99ce1~mv2.jpg"
-                    alt="menu1"
-                    width={520}
-                    height={520}
-                    className="w-full h-auto object-cover"
-                  />
+          {
+            categories.map((category) => (
+              <div key={category.id}>
+                <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
+                  <h3 className="text-2xl text-black font-semibold">
+                    {category.name}
+                  </h3>
                 </div>
-                <div className="mt-5">
-                  <h5 className="text-lg text-black font-semibold">YARRA SPRITZ</h5>
-                  <p className="mt-2.5 text-xs text-[#979797]">Strawberry Gum Aperol / Lemon Balm Vodka / Strawberry Sparkling Wine</p>
-                  <p className="mt-2.5 text-xs text-[#979797]">THB 360</p>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 mt-5">
+                  {products.filter(product => product.category_id !== category.id).map((product) => (
+                    <div key={product.id}>
+                      <div>
+                        <Image
+                          priority
+                          width={520}
+                          height={520}
+                          src={product.img}
+                          alt={product.name}
+                          className="w-full h-auto object-cover"
+                        />
+                      </div>
+                      <div className="mt-5">
+                        <h5 className="text-lg text-black font-semibold">{product.name}</h5>
+                        <p className="mt-2.5 text-xs text-[#979797]">{product.ingredents?.map((ing) => (<span key={ing}>{ing} / </span>))}</p>
+                        <p className="mt-2.5 text-xs text-[#979797]">$ {product.price}</p>
+                      </div>
+                    </div>
+                  ))
+                  }
                 </div>
+
               </div>
-              <div>
-                <div>
-                  <Image
-                    src="https://static.wixstatic.com/media/a40f43_9284af6c0f374761ae81ed0d28cba43e~mv2.jpg/v1/fill/w_836,h_836,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a40f43_9284af6c0f374761ae81ed0d28cba43e~mv2.jpg"
-                    alt="menu1"
-                    width={520}
-                    height={520}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                <div className="mt-5">
-                  <h5 className="text-lg text-black font-semibold">YARRA SPRITZ</h5>
-                  <p className="mt-2.5 text-xs text-[#979797]">Strawberry Gum Aperol / Lemon Balm Vodka / Strawberry Sparkling Wine</p>
-                  <p className="mt-2.5 text-xs text-[#979797]">THB 360</p>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <Image
-                    src="https://static.wixstatic.com/media/a40f43_e28eea9c177642ecaab36ae53c43397b~mv2.jpg/v1/fill/w_836,h_836,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a40f43_e28eea9c177642ecaab36ae53c43397b~mv2.jpg"
-                    alt="menu1"
-                    width={520}
-                    height={520}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                <div className="mt-5">
-                  <h5 className="text-lg text-black font-semibold">YARRA SPRITZ</h5>
-                  <p className="mt-2.5 text-xs text-[#979797]">Strawberry Gum Aperol / Lemon Balm Vodka / Strawberry Sparkling Wine</p>
-                  <p className="mt-2.5 text-xs text-[#979797]">THB 360</p>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <Image
-                    src="https://static.wixstatic.com/media/a40f43_998669914d3645aaa0d8084482624796~mv2.jpg/v1/fill/w_836,h_836,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/a40f43_998669914d3645aaa0d8084482624796~mv2.jpg"
-                    alt="menu1"
-                    width={520}
-                    height={520}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                <div className="mt-5">
-                  <h5 className="text-lg text-black font-semibold">MATCHA-</h5>
-                  <p className="mt-2.5 text-xs text-[#979797]">Strawberry Gum Aperol / Lemon Balm Vodka / Strawberry Sparkling Wine</p>
-                  <p className="mt-2.5 text-xs text-[#979797]">THB 360</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="mt-20">
-            <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
-              <h3 className="text-2xl text-black font-semibold">
-                VODKA
-              </h3>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-x-5 gap-y-10 mt-5">
-              <div>
-                <h3 className="text-xl text-black font-semibold">Grey Goose</h3>
-                <p className="mt-2.5 text-sm text-[#979797]">By Glass THB 500</p>
-                <p className="text-sm text-[#979797]">Bottle THB 5,900</p>
-              </div>
-              <div>
-                <h3 className="text-xl text-black font-semibold">Grey Goose Altius</h3>
-                <p className="mt-2.5 text-sm text-[#979797]">By Glass THB 1,500</p>
-                <p className="text-sm text-[#979797]">Bottle THB 18,000</p>
-              </div>
-            </div>
-          </div>
+
+
+            ))}
         </div>
       </div>
     </div>
-  );
+  )
 }
-
-export default Menu;
+export default Menu
