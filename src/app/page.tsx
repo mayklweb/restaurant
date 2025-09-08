@@ -13,7 +13,6 @@ export default function Home() {
     queryFn: getMenu,
   })
 
-
   const { data: categories, isError: isCategoriesError, error: categoriesError, isLoading: isCategoriesLoading } = useQuery<CategoriesType[], Error>({
     queryKey: ['categories'],
     queryFn: getCategories,
@@ -36,28 +35,30 @@ export default function Home() {
         <div>
           <h1 className="text-4xl text-black font-semibold">MENU</h1>
         </div>
-        <div className="mt-10">
+        <div className="my-10 flex flex-col gap-20">
           {
             categories?.map((category) => (
-              <div key={category.id}>
+              <div className="" key={category.id}>
                 <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
                   <h3 className="text-2xl text-black font-semibold">
                     {category.name}
                   </h3>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 mt-5">
-                  {products?.filter(product => product.category_id !== category.id).map((product) => (
+                  {products?.filter(product => product.category_id === category.id).map((product) => (
                     <div key={product.id}>
-                      <div>
-                        <Image
-                          priority
-                          width={520}
-                          height={520}
-                          src={product.img}
-                          alt={product.name}
-                          className="w-full h-auto object-cover"
-                        />
-                      </div>
+                      {
+                        product.img ? <div>
+                          <Image
+                            priority
+                            width={520}
+                            height={520}
+                            src={product.img}
+                            alt={product.name}
+                            className="w-full h-auto object-cover"
+                          />
+                        </div> : ""
+                      }
                       <div className="mt-5">
                         <h5 className="text-lg text-black font-semibold">{product.name}</h5>
                         <p className="mt-2.5 text-xs text-[#979797]">{product.ingredents?.map((ing) => (<span key={ing}>{ing} / </span>))}</p>
