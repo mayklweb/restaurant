@@ -61,8 +61,8 @@ export default function Home() {
                       }
                       <div className="mt-5">
                         <h5 className="text-lg text-black font-semibold">{product.name}</h5>
-                        <p className="mt-2.5 text-xs text-[#979797]">{product.ingredents?.map((ing) => (<span key={ing}>{ing} / </span>))}</p>
-                        <p className="mt-2.5 text-xs text-[#979797]">$ {product.price}</p>
+                        <p className="mt-2.5 text-sm text-[#979797]">{product.ingredents?.map((ing) => (<span key={ing}>{ing} / </span>))}</p>
+                        <p className="mt-2.5 text-sm text-[#979797]">$ {product.price}</p>
                       </div>
                     </div>
                   ))
