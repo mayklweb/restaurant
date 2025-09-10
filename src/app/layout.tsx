@@ -1,15 +1,9 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Mulish } from "next/font/google";
 import "./globals.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Providers from "../providers";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const mulish = Mulish({
+  variable: "--mulish-font",
   subsets: ["latin"],
 });
 
@@ -26,10 +20,20 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={` ${mulish.variable} antialiased`}
       >
         <Providers>
-          <header></header>
+          <header >
+            <div className="py-5 border-[1px] border-solid border-[#B2B2B2]">
+              <div className="container">
+                <div>
+                  <div></div>
+                  <div>LOGO</div>
+                  <div></div>
+                </div>
+              </div>
+            </div>
+          </header>
           <main>{children}</main>
           <footer></footer>
         </Providers>
