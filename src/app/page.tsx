@@ -36,7 +36,7 @@ export default function Home() {
     queryFn: getCategories,
   });
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!section1Ref.current || !section2Ref.current || !containerRef.current)
       return;
 
@@ -117,7 +117,7 @@ export default function Home() {
       <section ref={section2Ref} className="bg-white">
         <div className="container">
           <div className="">
-            <div className="py-5 lg:py-10 bg-white flex items-center justify-between">
+            <div className="sticky top-0 py-5 lg:py-10 bg-white flex items-center justify-between">
               <h1 className="text-4xl text-black font-semibold">MENU</h1>
               <button className="flex flex-col gap-1.5">
                 <div className="w-12 h-0.5 bg-black"></div>
