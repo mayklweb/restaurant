@@ -23,7 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className={` ${mulish.variable} antialiased`}
       >
         <Providers>
-          <header >
+          {/* <header >
             <div className="py-5 border-[1px] border-solid border-[#B2B2B2]">
               <div className="container">
                 <div>
@@ -31,9 +31,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   <div>LOGO</div>
                   <div></div>
                 </div>
+
               </div>
             </div>
-          </header>
+          </header> */}
           <main>{children}</main>
           <footer></footer>
         </Providers>

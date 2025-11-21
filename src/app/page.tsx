@@ -6,18 +6,25 @@ import { useQuery } from "@tanstack/react-query";
 import { getCategories, getMenu } from "../api/apiServices";
 
 export default function Home() {
-
-
-  const { data: products, isError, error, isLoading } = useQuery<ProductsType[], Error>({
-    queryKey: ['products'],
+  const {
+    data: products,
+    isError,
+    error,
+    isLoading,
+  } = useQuery<ProductsType[], Error>({
+    queryKey: ["products"],
     queryFn: getMenu,
-  })
+  });
 
-  const { data: categories, isError: isCategoriesError, error: categoriesError, isLoading: isCategoriesLoading } = useQuery<CategoriesType[], Error>({
-    queryKey: ['categories'],
+  const {
+    data: categories,
+    isError: isCategoriesError,
+    error: categoriesError,
+    isLoading: isCategoriesLoading,
+  } = useQuery<CategoriesType[], Error>({
+    queryKey: ["categories"],
     queryFn: getCategories,
-  })
-
+  });
 
   if (isCategoriesLoading && isLoading)
     return (
@@ -28,23 +35,39 @@ export default function Home() {
           <div className="w-full h-full bg-gray-300"></div>
         </div>
       </div>
-    )
+    );
 
-  if (isError) return <div>Error: {error.message}</div>
+  if (isError) return <div>Error: {error.message}</div>;
 
-  if (isCategoriesError) return <div>Error: {categoriesError.message}</div>
-
+  if (isCategoriesError) return <div>Error: {categoriesError.message}</div>;
 
   return (
-    <section>
-      <div className="container">
-        <div className="mt-10">
-          <div>
-            <h1 className="text-4xl text-black font-semibold">MENU</h1>
+    <div>
+      <section>
+        <div className="relative">
+          <div className="w-full h-full">
+            <Image
+              priority
+              width={1920}
+              height={1080}
+              src="/restaurant.jpg"
+              alt="Hero Image"
+              className="w-full h-full lg:h-screen object-cover"
+            />
           </div>
-          <div className="my-10 flex flex-col gap-20">
-            {
-              categories?.map((category) => (
+          <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-transparent via-white to-transparent blur-3xl">
+            <div></div>
+          </div>
+        </div>
+      </section>
+      <section>
+        <div className="container">
+          <div className="mt-10">
+            <div>
+              <h1 className="text-4xl text-black font-semibold">MENU</h1>
+            </div>
+            <div className="my-10 flex flex-col gap-20">
+              {categories?.map((category) => (
                 <div className="" key={category.id}>
                   <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
                     <h3 className="text-2xl text-black font-semibold">
@@ -52,37 +75,46 @@ export default function Home() {
                     </h3>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 mt-5">
-                    {products?.filter(product => product.category_id === category.id).map((product) => (
-                      <div key={product.id}>
-                        {
-                          product.img ? <div>
-                            <Image
-                              priority
-                              width={520}
-                              height={520}
-                              src={product.img}
-                              alt={product.name}
-                              className="w-full h-auto object-cover"
-                            />
-                          </div> : ""
-                        }
-                        <div className="mt-5">
-                          <h5 className="text-lg text-black font-semibold">{product.name}</h5>
-                          <p className="mt-2.5 text-sm text-[#979797]">{product.ingredents?.map((ing) => (<span key={ing}>{ing} / </span>))}</p>
-                          <p className="mt-2.5 text-sm text-[#979797]">$ {product.price}</p>
+                    {products
+                      ?.filter((product) => product.category_id === category.id)
+                      .map((product) => (
+                        <div key={product.id}>
+                          {product.img ? (
+                            <div>
+                              <Image
+                                priority
+                                width={520}
+                                height={520}
+                                src={product.img}
+                                alt={product.name}
+                                className="w-full h-auto object-cover"
+                              />
+                            </div>
+                          ) : (
+                            ""
+                          )}
+                          <div className="mt-5">
+                            <h5 className="text-lg text-black font-semibold">
+                              {product.name}
+                            </h5>
+                            <p className="mt-2.5 text-sm text-[#979797]">
+                              {product.ingredents?.map((ing) => (
+                                <span key={ing}>{ing} / </span>
+                              ))}
+                            </p>
+                            <p className="mt-2.5 text-sm text-[#979797]">
+                              $ {product.price}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    ))
-                    }
+                      ))}
                   </div>
-
                 </div>
-
-
               ))}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 }
