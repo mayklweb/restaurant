@@ -11,18 +11,12 @@
   --font-mulish: var(--mulish-font);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  /* background: var(--foreground); */
+  background: var(--foreground);
   color: var(--foreground);
   background: white;
   font-family: var(--font-mulish);
+  margin: 0;
 }
 
 .container {

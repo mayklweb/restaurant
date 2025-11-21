@@ -12,16 +12,12 @@ export const metadata = {
   description: "Menu List",
 };
 
-
-
 import { ReactNode } from "react";
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={` ${mulish.variable} antialiased`}
-      >
+      <body className={` ${mulish.variable} antialiased`}>
         <Providers>
           {/* <header >
             <div className="py-5 border-[1px] border-solid border-[#B2B2B2]">
