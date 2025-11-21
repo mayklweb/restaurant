@@ -43,6 +43,21 @@ export default function Home() {
 
   return (
     <div>
+      {/* <section>
+        <div className="relative w-full h-full">
+          <div className="absolute top-0 left-0">
+            <Image
+              src="/restaurant.jpg"
+              alt="Hero Image"
+              width={1920}
+              height={1080}
+              priority
+              className="w-full h-full lg:h-screen object-cover"
+            />
+          </div>
+
+        </div>
+      </section> */}
       <section>
         <div className="relative">
           <div className="w-full h-full">
@@ -50,16 +65,26 @@ export default function Home() {
               priority
               width={1920}
               height={1080}
-              src="/restaurant.jpg"
               alt="Hero Image"
+              src="/restaurant.jpg"
               className="w-full h-full lg:h-screen object-cover"
             />
           </div>
-          <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-transparent via-white to-transparent blur-3xl">
-            <div></div>
+          <div
+            className=" absolute bottom-0 left-0 w-full p-5 lg:p-10 flex items-end
+      bg-white/90 backdrop-blur-[1000px]
+      [mask-image:linear-gradient(to_top,black,transparent)]
+    "
+          >
+            <h1 className="text-2xl lg:text-8xl font-bold text-black">
+              Sofra
+              <br />
+              {/* RESTAURANT */}
+            </h1>
           </div>
         </div>
       </section>
+
       <section>
         <div className="container">
           <div className="mt-10">
