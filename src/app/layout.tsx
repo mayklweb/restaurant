@@ -1,9 +1,9 @@
-import { Mulish } from "next/font/google";
+import { Mulish, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "../providers";
 
-const mulish = Mulish({
-  variable: "--mulish-font",
+const instrument = Instrument_Sans({
+  variable: "--instrument-sans",
   subsets: ["latin"],
 });
 
@@ -17,7 +17,7 @@ import { ReactNode } from "react";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={` ${mulish.variable} antialiased`}>
+      <body className={` ${instrument.variable} antialiased`}>
         <Providers> 
           <header></header>
           <main className="flex flex-col flex-auto">{children}</main>
