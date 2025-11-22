@@ -18,9 +18,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={` ${mulish.variable} antialiased`}>
-        <Providers>
+        <Providers> 
           <header></header>
-          <main>{children}</main>
+          <main className="flex flex-col flex-auto">{children}</main>
           <footer></footer>
         </Providers>
       </body>
