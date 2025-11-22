@@ -19,18 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className={` ${mulish.variable} antialiased`}>
         <Providers>
-          {/* <header >
-            <div className="py-5 border-[1px] border-solid border-[#B2B2B2]">
-              <div className="container">
-                <div>
-                  <div></div>
-                  <div>LOGO</div>
-                  <div></div>
-                </div>
-
-              </div>
-            </div>
-          </header> */}
+          <header></header>
           <main>{children}</main>
           <footer></footer>
         </Providers>
