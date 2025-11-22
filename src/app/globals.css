@@ -10,6 +10,9 @@
   --font-mulish: var(--mulish-font);
 }
 
+html{
+  scroll-behavior: smooth;
+}
 body {
   color: var(--color-foreground);
   background-color: #FBFBFB;

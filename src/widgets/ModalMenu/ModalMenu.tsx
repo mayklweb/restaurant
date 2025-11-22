@@ -1,6 +1,7 @@
 import { getCategories } from "@/api/apiServices";
 import { CategoriesType } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
+import Link from "next/link";
 import React from "react";
 
 function ModalMenu({
@@ -48,11 +49,11 @@ function ModalMenu({
         </div>
         <div className="p-5">
           {categories?.map((category) => (
-            <div key={category.id} className="mb-2 border-b border-b-[#B2B2B2]">
+            <Link href={`#${category.name}`} onClick={() => setOpen(false)} key={category.id} className="mb-2 border-b border-b-[#B2B2B2]">
               <h2 className="text-xl :text-2xl text-black font-semibold tracking-tight">
                 {category.name}
               </h2>
-            </div>
+            </Link>
           ))}
         </div>
         <div></div>
