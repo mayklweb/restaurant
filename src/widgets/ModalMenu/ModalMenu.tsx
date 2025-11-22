@@ -35,7 +35,7 @@ function ModalMenu({
           open ? "translate-x-0" : "translate-x-full"
         } transition-all duration-500 ease-in-out flex flex-col`}
       >
-        <div className="w-full flex items-center justify-between p-2.5 border-y border-y-[#B2B2B2]">
+        <div className="w-full flex items-center justify-between p-5 border-y border-y-[#B2B2B2]">
           <h1 className="text-2xl text-black font-semibold tracking-tight">
             MENU
           </h1>

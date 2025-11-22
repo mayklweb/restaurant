@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import CardList from "@/widgets/CardList/CardList";
 import { useState } from "react";
+import CardList from "@/widgets/CardList/CardList";
 import ModalMenu from "@/widgets/ModalMenu/ModalMenu";
 
 export default function Home() {
@@ -24,7 +24,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-0 left-0 w-full p-5 lg:p-10 flex items-end bg-[#FBFBFB]/90 backdrop-blur-[1000px] [mask-image:linear-gradient(to_top,black,transparent)]">
             <h1 className="text-2xl lg:text-8xl font-bold text-black">
-              Sofra
+             
               <br />
               RESTAURANT
             </h1>
@@ -32,7 +32,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="relative w-full bg-[#FBFBFB] scroll">
+      <div className="relative w-full bg-[#FBFBFB] scroll">
         <div className="w-full">
           <div className="sticky top-0 bg-[#FBFBFB]">
             <div className="container">
@@ -53,7 +53,7 @@ export default function Home() {
             <CardList />
           </div>
         </div>
-      </section>
+      </div>
       <ModalMenu open={open} setOpen={setOpen} />
     </div>
   );
