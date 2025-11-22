@@ -50,7 +50,7 @@ function ModalMenu({
         <div className="p-5">
           {categories?.map((category) => (
             <Link href={`#${category.name}`} onClick={() => setOpen(false)} key={category.id}>
-              <h2 className="text-xl :text-2xl text-black font-semibold tracking-tight mb-2 border-b border-b-[#B2B2B2]">
+              <h2 className="text-lg lg:text-2xl text-black font-semibold tracking-tight mb-2 border-b border-b-[#B2B2B2]">
                 {category.name}
               </h2>
             </Link>
