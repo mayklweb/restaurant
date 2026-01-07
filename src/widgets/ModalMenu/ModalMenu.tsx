@@ -1,6 +1,7 @@
 import { getCategories } from "@/api/apiServices";
 import { CategoriesType } from "@/types/types";
 import { useQuery } from "@tanstack/react-query";
+import { useLenis } from "lenis/react";
 import Link from "next/link";
 import React from "react";
 
@@ -11,6 +12,25 @@ function ModalMenu({
   open: boolean;
   setOpen: (open: boolean) => void;
 }) {
+  const lenis = useLenis();
+
+  const handleScroll = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    name: string
+  ) => {
+    e.preventDefault();
+
+    const el = document.getElementById(name);
+    if (!el) return;
+
+    lenis?.scrollTo(el, {
+      duration: 2.5,
+      offset: -100,
+    });
+
+    setOpen(false);
+  };
+
   const {
     data: categories,
     isError: isCategoriesError,
@@ -42,17 +62,20 @@ function ModalMenu({
           </h1>
           <button
             onClick={() => setOpen(false)}
-            className="text-sm lg:text-sm font-semibold tracking-tight cursor-pointer"
+            className="text-sm lg:text-sm font-semibold tracking-tight p-1 cursor-pointer"
           >
             CLOSE
           </button>
         </div>
         <div className="p-5">
           {categories?.map((category) => (
-            <Link href={`#${category.name}`} onClick={() => setOpen(false)} key={category.id}>
-              <h2 className="text-lg lg:text-2xl text-black font-semibold tracking-tight mb-5 border-b border-b-[#B2B2B2]">
-                {category.name}
-              </h2>
+            <Link
+              href={`#${category.name}`}
+              onClick={(e) => handleScroll(e, category.name)}
+              key={category.id}
+              className="text-lg lg:text-2xl text-black font-semibold tracking-tight mb-3 border-b border-b-[#B2B2B2] block"
+            >
+              {category.name}
             </Link>
           ))}
         </div>

@@ -18,9 +18,9 @@ function Card({ product }: { product: any }) {
         ""
       )}
       <div className="mt-4">
-        <div className="flex items-center justify-between">
+        <div className={`flex items-center justify-between ${!product.img && 'flex-col items-start'}`}>
           <h5 className="text-lg text-black font-semibold">{product.name}</h5>
-          <p className="text-sm text-[#979797]">$ {product.price}</p>
+          <p className="text-sm md:text-base text-[#979797] uppercase">$ {product.price} сум</p>
         </div>
         <p className="mt-2.5 text-sm text-[#979797]">
           {product.ingredents?.map((ing: any, idx: number) => (

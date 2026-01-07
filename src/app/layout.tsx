@@ -1,6 +1,7 @@
 import { Mulish, Instrument_Sans } from "next/font/google";
 import "./globals.css";
 import Providers from "../providers";
+import { ReactLenis } from "lenis/react";
 
 const instrument = Instrument_Sans({
   variable: "--instrument-sans",
@@ -18,7 +19,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className={` ${instrument.variable} antialiased`}>
-        <Providers> 
+        <ReactLenis root />
+        <Providers>
           <header></header>
           <main className="flex flex-col flex-auto">{children}</main>
           <footer></footer>
