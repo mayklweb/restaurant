@@ -39,7 +39,7 @@ function Menu() {
                 </Link>
                 <button
                   onClick={() => setOpen(true)}
-                  className="text-xs lg:text-sm font-semibold tracking-tight cursor-pointer"
+                  className="text-sm lg:text-sm font-semibold tracking-tight cursor-pointer"
                 >
                   MENU
                 </button>

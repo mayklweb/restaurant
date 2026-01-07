@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className="w-full h-full">
       <div className="w-full h-full p-5 bg-white">
-        <div className="w-full h-full bg-[#FBFBFB] border border-[#B2B2B2]">
+        <div className="w-full h-full bg-[#fff]">
           <div className="w-full h-full flex flex-col gap-10 items-center justify-center">
             <div className="text-center">
               <h1 className="text-4xl font-semibold tracking-tight">
@@ -16,40 +16,40 @@ export default function Home() {
                 RESTAURANT
               </h1>
             </div>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col items-center gap-5">
               <Link
                 href={"/menu"}
-                className="w-[240px] h-[40px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] "
+                className="w-[260px] h-[50px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] bg-[#FBFBFB]"
               >
                 MENU
               </Link>
               <Link
                 href={"/"}
-                className="w-[240px] h-[40px] flex items-center justify-center font-semibold tracking-tight border border-[#171717]"
+                className="w-[260px] h-[50px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] bg-[#FBFBFB]"
               >
                 LOCATION
               </Link>
               <Link
                 href={"/"}
-                className="w-[240px] h-[40px] flex items-center justify-center font-semibold tracking-tight border border-[#171717]"
+                className="w-[260px] h-[50px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] bg-[#FBFBFB]"
               >
                 BOOK A TABLE
               </Link>
               <Link
-                href={"/phone"}
-                className="w-[240px] h-[40px] flex items-center justify-center font-semibold tracking-tight border border-[#171717]"
+                href={"/"}
+                className="w-[260px] h-[50px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] bg-[#FBFBFB]"
               >
                 PHONE
               </Link>
               <Link
                 href={"/"}
-                className="w-[240px] h-[40px] flex items-center justify-center font-semibold tracking-tight border border-[#171717]"
+                className="w-[260px] h-[50px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] bg-[#FBFBFB]"
               >
                 INSTAGRAM
               </Link>
               <Link
                 href={"/"}
-                className="w-[240px] h-[40px] flex items-center justify-center font-semibold tracking-tight border border-[#171717]"
+                className="w-[260px] h-[50px] flex items-center justify-center font-semibold tracking-tight border border-[#171717] bg-[#FBFBFB]"
               >
                 TELEGRAM
               </Link>
@@ -60,3 +60,4 @@ export default function Home() {
     </div>
   );
 }
+  

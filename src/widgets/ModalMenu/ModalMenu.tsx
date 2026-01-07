@@ -42,7 +42,7 @@ function ModalMenu({
           </h1>
           <button
             onClick={() => setOpen(false)}
-            className="text-xs lg:text-sm font-semibold tracking-tight cursor-pointer"
+            className="text-sm lg:text-sm font-semibold tracking-tight cursor-pointer"
           >
             CLOSE
           </button>
