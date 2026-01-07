@@ -28,7 +28,7 @@ function CardList() {
       <div className="flex flex-col gap-20">
         {categories?.map((category) => (
           <section id={category.name} className="" key={category.id}>
-            <div className="py-4 border-y-[1px] border-[#B2B2B2] border-solid">
+            <div className="py-4 border-b-[1px] border-[#B2B2B2] border-solid">
               <h3 className="text-xl text-black font-semibold">
                 {category.name}
               </h3>

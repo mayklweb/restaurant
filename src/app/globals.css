@@ -32,12 +32,7 @@ body {
   padding: 0 30px;
 }
 
-.mask-concave {
-  -webkit-mask-image: radial-gradient(circle at 0 0, transparent 20px, black 21px),
-                     radial-gradient(circle at 100% 0, transparent 20px, black 21px),
-                     radial-gradient(circle at 100% 100%, transparent 20px, black 21px),
-                     radial-gradient(circle at 0 100%, transparent 20px, black 21px);
-  -webkit-mask-position: top left, top right, bottom right, bottom left;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 50% 50%;
+/* global.css */
+::-webkit-scrollbar {
+  display: none;
 }

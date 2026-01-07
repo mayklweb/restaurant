@@ -1,12 +1,23 @@
 "use client";
 import CardList from "@/widgets/CardList/CardList";
 import ModalMenu from "@/widgets/ModalMenu/ModalMenu";
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
+import { getCategories } from "@/api/apiServices";
+import { CategoriesType } from "@/types/types";
+import { useQuery } from "@tanstack/react-query";
 
 function Menu() {
   const [open, setOpen] = useState<boolean>(false);
+  const {
+    data: categories,
+    isError: isCategoriesError,
+    error: categoriesError,
+    isLoading: isCategoriesLoading,
+  } = useQuery<CategoriesType[], Error>({
+    queryKey: ["categories"],
+    queryFn: getCategories,
+  });
 
   return (
     <>
@@ -15,24 +26,7 @@ function Menu() {
           <div className="sticky top-0 bg-[#FBFBFB]">
             <div className="container">
               <div className="py-2.5 lg:py-5 flex items-center justify-between">
-                <Link href={'/'} className="flex items-center gap-2">
-                  <button>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 20 22"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="1"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      className="lucide lucide-arrow-left-icon lucide-arrow-left"
-                    >
-                      <path d="m12 19-7-7 7-7" />
-                      <path d="M19 12H5" />
-                    </svg>
-                  </button>
+                <Link href={"/"} className="flex items-center gap-2">
                   <h1 className="text-2xl text-black font-semibold tracking-tight">
                     MIROMENU
                   </h1>
@@ -46,6 +40,23 @@ function Menu() {
               </div>
             </div>
           </div>
+          <div className="border-y border-[#B2B2B2] overflow-x-scroll p-2">
+            <div className="flex gap-5 w-max">
+              {categories?.map((category) => (
+                <Link
+                  href={`#${category.name}`}
+                  onClick={() => setOpen(false)}
+                  key={category.id}
+                  className="border-r-[1px] border-[#B2B2B2]"
+                >
+                  <h2 className="text-lg lg:text-2xl text-black font-semibold tracking-tight pr-5">
+                    {category.name}
+                  </h2>
+                </Link>
+              ))}
+            </div>
+          </div>
+
           <div className="container">
             <CardList />
           </div>
