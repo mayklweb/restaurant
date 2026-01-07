@@ -40,7 +40,7 @@ function Menu() {
               </div>
             </div>
           </div>
-          <div className="border-y border-[#B2B2B2] overflow-x-scroll p-2">
+          <div className="sticky top-[51px] bg-[#FBFBFB] border-y border-[#B2B2B2] overflow-x-scroll p-2">
             <div className="flex gap-5 w-max">
               {categories?.map((category) => (
                 <Link
