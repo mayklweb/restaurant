@@ -113,12 +113,12 @@ function Home() {
                     MIROMENU
                   </h1>
                 </Link>
-                <button
+                {/* <button
                   onClick={() => setOpen(true)}
                   className="text-sm lg:text-sm font-semibold tracking-tight p-1 cursor-pointer"
                 >
                   MENU
-                </button>
+                </button> */}
               </div>
             </div>
           </div>
